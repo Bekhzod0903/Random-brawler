@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            list-style-type: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+        li:nth-child(3n) {
+            border-right: none;
+        }
+        li:nth-last-child(-n+3) {
+            border-bottom: none;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>List of Brawlers</h1>
+    <ul>
+        {% for brawler in brawlers %}
+            <li>{{ brawler.name }}</li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'random_brawler' %}" method="get">
+        <button type="submit">Get Random Brawler</button>
+    </form>
+</body>
+</html>
